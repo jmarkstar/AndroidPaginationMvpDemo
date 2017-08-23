@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'io.fabric'
+
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+def CONFIG = { k -> "\"${project.properties.get(k)}\"" }
+def BASE_URL = "BASE_URL"
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.jmarkstar.carlist"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.compileSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
+    buildTypes {
+        release {
+            buildConfigField "String", BASE_URL, CONFIG("release.server.url")
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            buildConfigField "String", BASE_URL, CONFIG("debug.server.url")
+            debuggable true
+        }
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    lintOptions {
+        abortOnError false
+        warningsAsErrors false
+    }
+}
+
+dependencies {
+    compile project(':core-lib')
+
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    compile rootProject.ext.libraries.appCompat
+    compile rootProject.ext.libraries.androidSupport
+    compile rootProject.ext.libraries.designSupport
+    compile rootProject.ext.libraries.recyclerView
+    compile rootProject.ext.libraries.centerRecycler
+    compile rootProject.ext.libraries.cardView
+    compile rootProject.ext.libraries.androidAnnotations
+
+    compile rootProject.ext.libraries.dagger
+    annotationProcessor rootProject.ext.libraries.daggerCompiler
+    compile rootProject.ext.libraries.butterknife
+    annotationProcessor rootProject.ext.aptLibraries.butterknifeCompiler
+
+    testCompile 'junit:junit:4.12'
+
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
+        transitive = true;
+    }
+}
