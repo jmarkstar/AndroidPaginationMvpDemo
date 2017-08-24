@@ -1,7 +1,7 @@
 package com.jmarkstar.carlist.di;
 
 import android.content.Context;
-import com.jmarkstar.carlist.ui.cartype.MainActivity;
+import com.jmarkstar.carlist.ui.main.MainActivity;
 import com.jmarkstar.carlist_core.domain.interactor.executor.Executor;
 import com.jmarkstar.carlist_core.domain.interactor.executor.ExecutorModule;
 import com.jmarkstar.carlist_core.domain.interactor.executor.MainThread;

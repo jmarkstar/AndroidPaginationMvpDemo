@@ -4,11 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.jmarkstar.carlist.ui.cartype.MainActivity">
+    tools:context="com.jmarkstar.carlist.ui.main.MainActivity">
 
-    <TextView
+    <LinearLayout android:layout_centerInParent="true"
+        android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_height="wrap_content">
+
+        <Button android:id="@+id/btn_go_pagination"
+            android:text="@string/main_option_pagination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button android:id="@+id/btn_go_searching"
+            android:text="@string/main_option_searching"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 </RelativeLayout>

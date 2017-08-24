@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CarList</string>
+    <string name="main_option_pagination">Pagination</string>
+    <string name="main_option_searching">Searching</string>
 </resources>

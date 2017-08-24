@@ -3,20 +3,22 @@
     package="com.jmarkstar.carlist">
 
     <application
-        android:allowBackup="true"
         android:name=".CarListApplication"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.cartype.MainActivity">
+        <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.cartype.pagination.CarTypePaginationActivity" />
+        <activity android:name=".ui.cartype.searching.CarTypeSearchingActivity"></activity>
     </application>
 
 </manifest>

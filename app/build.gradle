@@ -74,9 +74,10 @@ dependencies {
     compile rootProject.ext.libraries.butterknife
     annotationProcessor rootProject.ext.aptLibraries.butterknifeCompiler
 
-    testCompile 'junit:junit:4.12'
 
     compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
         transitive = true;
     }
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
 }

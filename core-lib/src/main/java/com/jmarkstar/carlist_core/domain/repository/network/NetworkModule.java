@@ -30,7 +30,7 @@ public final class NetworkModule {
 
     @Provides
     @Singleton
-    ApiTestService provideOechsleService(Retrofit retrofit){
+    ApiTestService provideApiTestService(Retrofit retrofit){
         return retrofit.create(ApiTestService.class);
     }
 
