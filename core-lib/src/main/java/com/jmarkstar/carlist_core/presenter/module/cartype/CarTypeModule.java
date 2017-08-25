@@ -1,4 +1,4 @@
-package com.jmarkstar.carlist_core.presenter.cartype;
+package com.jmarkstar.carlist_core.presenter.module.cartype;
 
 import dagger.Module;
 

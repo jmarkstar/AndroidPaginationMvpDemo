@@ -18,4 +18,7 @@ public class Constants {
     public static final int MAX_POOL_SIZE = 15;
     public static final int KEEP_ALIVE_TIME = 120;
     public static final TimeUnit TIME_UNIT = TimeUnit.SECONDS;
+
+    public static final int PAGE_SIZE = 15;
+    public static final String WA_KEY = "coding-puzzle-client-449cc9d";
 }

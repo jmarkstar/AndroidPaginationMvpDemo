@@ -18,7 +18,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.cartype.pagination.CarTypePaginationActivity" />
-        <activity android:name=".ui.cartype.searching.CarTypeSearchingActivity"></activity>
+        <activity android:name=".ui.cartype.searching.CarTypeSearchingActivity" />
+        <activity android:name=".ui.cartype.pagination.manutafturer.SelectManufacturerActivity" />
+        <activity android:name=".ui.cartype.pagination.maintype.SelectMainTypeActivity" />
+        <activity android:name=".ui.cartype.pagination.builtdate.SelectBuiltDateActivity"></activity>
     </application>
 
 </manifest>

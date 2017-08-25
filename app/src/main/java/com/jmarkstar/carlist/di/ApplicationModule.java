@@ -2,6 +2,8 @@ package com.jmarkstar.carlist.di;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
+import com.jmarkstar.carlist.util.AppConstants;
 import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
@@ -24,4 +26,10 @@ public class ApplicationModule {
         return mApplication;
     }
 
+
+    @Provides
+    @Singleton
+    SharedPreferences provideSharedPreferences(Context context){
+        return context.getSharedPreferences(AppConstants.SHARE_PREFERENCES_NAME, Context.MODE_PRIVATE);
+    }
 }
