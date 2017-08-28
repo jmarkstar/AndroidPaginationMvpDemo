@@ -9,8 +9,6 @@ import javax.inject.Inject;
  */
 public class CarTypeDispatcherImpl implements CarTypeDispatcher {
 
-    private static final String TAG = "CarTypeDispatcherImpl";
-
     @Inject Executor mExecutor;
     @Inject CarTypeDataManager mCarTypeDataManager;
 

@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.jmarkstar.carlist.R;
 import com.jmarkstar.carlist.customview.ErrorMessageView;
 import com.jmarkstar.carlist.di.ApplicationComponent;
-import com.jmarkstar.carlist.parcelable.SelectedItemParcelable;
+import com.jmarkstar.carlist.parcelable.ItemParcelable;
 import com.jmarkstar.carlist.parcelable.mapper.ItemMapper;
 import com.jmarkstar.carlist.ui.BaseActivity;
 import com.jmarkstar.carlist.ui.cartype.pagination.CarTypePaginationActivity;
@@ -36,7 +36,6 @@ import butterknife.BindView;
  */
 public class SelectMainTypeActivity extends BaseActivity implements SelectMainTypeMvpView, PaginationAdapter.OnClickPaginationItem {
 
-    private static final String TAG = "SelectManufacAct";
     private static final String SELECTED_MANUFACTURER = "selected_manufacturer";
     private static final String SELECTED_MAIN_TYPE = "selected_main_type";
     private static final String CURRENT_SCROLLING_POSITION = "current_scrolling_position";
@@ -52,11 +51,11 @@ public class SelectMainTypeActivity extends BaseActivity implements SelectMainTy
 
     private boolean isFirstTime;
     private Integer mCurrentScrollingPosition;
-    private SelectedItemParcelable mSelectedMainType;
-    private SelectedItemParcelable mSelectedManufacturer;
+    private ItemParcelable mSelectedMainType;
+    private ItemParcelable mSelectedManufacturer;
 
-    public static void start(AppCompatActivity activity, SelectedItemParcelable manufacturer,
-                             SelectedItemParcelable mainType) {
+    public static void start(AppCompatActivity activity, ItemParcelable manufacturer,
+                             ItemParcelable mainType) {
         Intent starter = new Intent(activity, SelectMainTypeActivity.class);
         starter.putExtra(SELECTED_MANUFACTURER, manufacturer);
         starter.putExtra(SELECTED_MAIN_TYPE, mainType);

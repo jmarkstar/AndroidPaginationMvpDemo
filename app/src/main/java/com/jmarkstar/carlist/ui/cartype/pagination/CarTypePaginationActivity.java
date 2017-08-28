@@ -8,7 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.jmarkstar.carlist.R;
 import com.jmarkstar.carlist.di.ApplicationComponent;
-import com.jmarkstar.carlist.parcelable.SelectedItemParcelable;
+import com.jmarkstar.carlist.parcelable.ItemParcelable;
 import com.jmarkstar.carlist.ui.BaseActivity;
 import com.jmarkstar.carlist.ui.cartype.pagination.builtdate.SelectBuiltDateActivity;
 import com.jmarkstar.carlist.ui.cartype.pagination.maintype.SelectMainTypeActivity;
@@ -42,9 +42,9 @@ public class CarTypePaginationActivity extends BaseActivity {
     @BindView(R.id.tv_main_type) TextView mTvMainType;
     @BindView(R.id.tv_built_date) TextView mTvBuiltDate;
 
-    private SelectedItemParcelable selectedManufacturer;
-    private SelectedItemParcelable selectedMainType;
-    private SelectedItemParcelable selectedBuildDate;
+    private ItemParcelable selectedManufacturer;
+    private ItemParcelable selectedMainType;
+    private ItemParcelable selectedBuildDate;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, CarTypePaginationActivity.class);

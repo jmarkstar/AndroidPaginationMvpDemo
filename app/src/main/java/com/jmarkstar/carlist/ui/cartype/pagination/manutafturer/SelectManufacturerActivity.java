@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.jmarkstar.carlist.R;
 import com.jmarkstar.carlist.customview.ErrorMessageView;
 import com.jmarkstar.carlist.di.ApplicationComponent;
-import com.jmarkstar.carlist.parcelable.SelectedItemParcelable;
+import com.jmarkstar.carlist.parcelable.ItemParcelable;
 import com.jmarkstar.carlist.parcelable.mapper.ItemMapper;
 import com.jmarkstar.carlist.ui.BaseActivity;
 import com.jmarkstar.carlist.ui.cartype.pagination.CarTypePaginationActivity;
@@ -52,9 +52,9 @@ public class SelectManufacturerActivity extends BaseActivity
 
     private boolean isFirstTime;
     private Integer mCurrentScrollingPosition;
-    private SelectedItemParcelable mSelectedManufacturer;
+    private ItemParcelable mSelectedManufacturer;
 
-    public static void start(AppCompatActivity activity, SelectedItemParcelable selectedManufacturer) {
+    public static void start(AppCompatActivity activity, ItemParcelable selectedManufacturer) {
         Intent starter = new Intent(activity, SelectManufacturerActivity.class);
         starter.putExtra(SELECTED_MANUFACTURER, selectedManufacturer);
         activity.startActivityForResult(starter, CarTypePaginationActivity.REQUEST_MANUFACTURER);

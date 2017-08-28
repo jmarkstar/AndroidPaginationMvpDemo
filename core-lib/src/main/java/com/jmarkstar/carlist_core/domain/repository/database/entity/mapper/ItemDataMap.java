@@ -22,7 +22,7 @@ public class ItemDataMap {
         return models;
     }
 
-    public static List<ItemData> mapListModelToManufacturerData(List<ItemModel> models, ItemType itemType){
+    public static List<ItemData> mapListModelToItemData(List<ItemModel> models, ItemType itemType){
         List<ItemData> datas = new ArrayList<>();
         for(ItemModel model : models){
             datas.add(mapModelToData(model, itemType));

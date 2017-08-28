@@ -7,7 +7,7 @@ import android.os.Parcelable;
  * Created by jmarkstar on 26/08/2017.
  */
 
-public class SelectedItemParcelable implements Parcelable {
+public class ItemParcelable implements Parcelable {
 
     private String number;
     private String name;
@@ -30,7 +30,7 @@ public class SelectedItemParcelable implements Parcelable {
 
     @Override
     public String toString() {
-        return "SelectedItemParcelable{" +
+        return "ItemParcelable{" +
                 "number='" + number + '\'' +
                 ", name='" + name + '\'' +
                 '}';
@@ -48,23 +48,23 @@ public class SelectedItemParcelable implements Parcelable {
         dest.writeString(this.name);
     }
 
-    public SelectedItemParcelable() {
+    public ItemParcelable() {
     }
 
-    protected SelectedItemParcelable(Parcel in) {
+    protected ItemParcelable(Parcel in) {
         this.number = in.readString();
         this.name = in.readString();
     }
 
-    public static final Creator<SelectedItemParcelable> CREATOR = new Creator<SelectedItemParcelable>() {
+    public static final Creator<ItemParcelable> CREATOR = new Creator<ItemParcelable>() {
         @Override
-        public SelectedItemParcelable createFromParcel(Parcel source) {
-            return new SelectedItemParcelable(source);
+        public ItemParcelable createFromParcel(Parcel source) {
+            return new ItemParcelable(source);
         }
 
         @Override
-        public SelectedItemParcelable[] newArray(int size) {
-            return new SelectedItemParcelable[size];
+        public ItemParcelable[] newArray(int size) {
+            return new ItemParcelable[size];
         }
     };
 }

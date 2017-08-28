@@ -1,7 +1,5 @@
 package com.jmarkstar.carlist_core.presenter.module.cartype.builtdate;
 
-import android.util.Log;
-
 import com.jmarkstar.carlist_core.R;
 import com.jmarkstar.carlist_core.domain.interactor.Action;
 import com.jmarkstar.carlist_core.domain.interactor.BuiltDatesDispatcher;
@@ -11,6 +9,7 @@ import com.jmarkstar.carlist_core.presenter.base.BasePresenter;
 import com.jmarkstar.carlist_core.util.Constants;
 import java.util.List;
 import javax.inject.Inject;
+import timber.log.Timber;
 
 /**
  * Created by jmarkstar on 27/08/2017.
@@ -19,14 +18,12 @@ public class SelectBuiltDatePresenter<V extends SelectBuiltDateMvpView>
         extends BasePresenter<V>
         implements SelectBuiltDateMvpPresenter<V> {
 
-    private static final String TAG = "BuiltDatesPresenter";
-
     @Inject BuiltDatesDispatcher mBuiltDatesDispatcher;
 
     @Inject SelectBuiltDatePresenter(){}
 
     @Override public void doGetBuiltDates(String manufacturer, String mainType) {
-        Log.v(TAG, "doGetBuiltDates("+manufacturer+", "+mainType+")");
+        Timber.d("doGetBuiltDates("+manufacturer+", "+mainType+")");
         mView.showProgress();
         if(mView.isAirplaneModeOff() && mView.isConnected()){
             getBuiltDates(manufacturer, mainType);

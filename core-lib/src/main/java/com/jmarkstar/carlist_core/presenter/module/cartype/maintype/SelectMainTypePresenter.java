@@ -11,14 +11,14 @@ import com.jmarkstar.carlist_core.presenter.base.BasePresenter;
 import com.jmarkstar.carlist_core.util.Constants;
 import javax.inject.Inject;
 
+import timber.log.Timber;
+
 /**
  * Created by jmarkstar on 27/08/2017.
  */
 public class SelectMainTypePresenter<V extends SelectMainTypeMvpView>
     extends BasePresenter<V>
     implements SelectMainTypeMvpPresenter<V>{
-
-    private static final String TAG = "MainTypePresenter";
 
     @Inject MainTypeDataDispatcher mMainTypeDispatcher;
 
@@ -29,7 +29,7 @@ public class SelectMainTypePresenter<V extends SelectMainTypeMvpView>
     @Inject SelectMainTypePresenter(){}
 
     @Override public void doGetMoreMainTypes(final String manufacturer) {
-        Log.v(TAG, "doGetBuiltDates("+manufacturer+")");
+        Timber.d("doGetBuiltDates("+manufacturer+")");
         if(mView.isAirplaneModeOff() && mView.isConnected()){
             getMoreMainTypes(manufacturer);
         }else{
@@ -39,7 +39,7 @@ public class SelectMainTypePresenter<V extends SelectMainTypeMvpView>
     }
 
     @Override public void doGetMainTypes(final String manufacturer) {
-        Log.v(TAG, "doGetBuiltDates("+manufacturer+")");
+        Timber.d("doGetBuiltDates("+manufacturer+")");
         if(mView.isAirplaneModeOff() && mView.isConnected()){
             getMainTypes(manufacturer);
         }else{
@@ -61,7 +61,7 @@ public class SelectMainTypePresenter<V extends SelectMainTypeMvpView>
         mMainTypeDispatcher.getPaginationInfo(manufacturer, new Action.Callback<PaginationInfoModel>() {
             @Override public void onSuccess(PaginationInfoModel pagination) {
                 paginationInfoModel = pagination;
-                Log.v(TAG, paginationInfoModel.toString());
+                Timber.d(paginationInfoModel.toString());
                 isFirstRequest = false;
                 int nextPage = paginationInfoModel.getPage()+1;
                 mView.showPaginationProgress();
@@ -77,7 +77,7 @@ public class SelectMainTypePresenter<V extends SelectMainTypeMvpView>
         mMainTypeDispatcher.getPaginationInfo(manufacturer, new Action.Callback<PaginationInfoModel>() {
             @Override public void onSuccess(PaginationInfoModel pagination) {
                 paginationInfoModel = pagination;
-                Log.v(TAG, paginationInfoModel.toString());
+                Timber.d( paginationInfoModel.toString());
                 if(isViewAttached())
                     mView.showProgress();
 
@@ -95,13 +95,13 @@ public class SelectMainTypePresenter<V extends SelectMainTypeMvpView>
 
 
     private void getMainTypesByManufacturer(boolean fromServer, int page, String manufacturer){
-        Log.v(TAG, "getMainTypesByManufacturer("+manufacturer+","+page+", "+manufacturer+")");
+        Timber.d("getMainTypesByManufacturer("+manufacturer+","+page+", "+manufacturer+")");
         mMainTypeDispatcher.getMainTypes(fromServer, manufacturer, page,
                 Constants.PAGE_SIZE, Constants.WA_KEY, new Action.Callback<PaginationItemsModel>() {
             @Override public void onSuccess(PaginationItemsModel response) {
                 paginationInfoModel.setPage(response.getPage());
                 paginationInfoModel.setTotalPageCount(response.getTotalPageCount());
-                Log.v(TAG, "paginationInfoModel="+paginationInfoModel);
+                Timber.d( "paginationInfoModel="+paginationInfoModel);
                 if(isViewAttached()){
                     if(isFirstRequest)
                         mView.hideProgress();

@@ -37,7 +37,7 @@ public class ManufacturerDataManagerImpl extends BaseDataManager implements Manu
                     mAppPreferences.saveManufacturerTotalPageCount(response.getTotalPageCount());
                     try {
                         PaginationItemsModel paginationItemsModel = CarTypeMapper.mapResponseToItemsModel(response);
-                        mItemDao.insertList(ItemDataMap.mapListModelToManufacturerData(paginationItemsModel.getItems(), ItemType.MANUFACTURER));
+                        mItemDao.insertList(ItemDataMap.mapListModelToItemData(paginationItemsModel.getItems(), ItemType.MANUFACTURER));
                         mItemDao.close();
                         notifySuccess(paginationItemsModel, callback);
                     } catch (LocalDatabaseException e) {

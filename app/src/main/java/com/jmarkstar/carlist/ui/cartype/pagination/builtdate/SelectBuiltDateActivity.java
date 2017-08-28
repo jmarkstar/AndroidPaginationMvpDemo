@@ -16,7 +16,7 @@ import android.widget.ProgressBar;
 import com.jmarkstar.carlist.R;
 import com.jmarkstar.carlist.customview.ErrorMessageView;
 import com.jmarkstar.carlist.di.ApplicationComponent;
-import com.jmarkstar.carlist.parcelable.SelectedItemParcelable;
+import com.jmarkstar.carlist.parcelable.ItemParcelable;
 import com.jmarkstar.carlist.parcelable.mapper.ItemMapper;
 import com.jmarkstar.carlist.ui.BaseActivity;
 import com.jmarkstar.carlist.ui.cartype.pagination.CarTypePaginationActivity;
@@ -24,9 +24,11 @@ import com.jmarkstar.carlist_core.domain.model.ItemModel;
 import com.jmarkstar.carlist_core.presenter.module.cartype.builtdate.SelectBuiltDateModule;
 import com.jmarkstar.carlist_core.presenter.module.cartype.builtdate.SelectBuiltDateMvpPresenter;
 import com.jmarkstar.carlist_core.presenter.module.cartype.builtdate.SelectBuiltDateMvpView;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import butterknife.BindView;
+import timber.log.Timber;
 
 /**
  * Created by jmarkstar on 26/08/2017.
@@ -37,6 +39,7 @@ public class SelectBuiltDateActivity extends BaseActivity
     private static final String SELECTED_MANUFACTURER = "selected_manufacturer";
     private static final String SELECTED_MAIN_TYPE = "selected_main_type";
     private static final String SELECTED_BUILT_DATE = "selected_built_date";
+    private static final String BUILT_DATES = "built_dates";
     private static final String CURRENT_SCROLLING_POSITION = "current_scrolling_position";
 
     @Inject SelectBuiltDateMvpPresenter<SelectBuiltDateMvpView> mPresenter;
@@ -49,12 +52,13 @@ public class SelectBuiltDateActivity extends BaseActivity
 
     private BuiltDateAdapter mAdapter;
     private Integer mCurrentScrollingPosition;
-    private SelectedItemParcelable mSelectedMainType;
-    private SelectedItemParcelable mSelectedManufacturer;
-    private SelectedItemParcelable mSelectedBuiltDate;
+    private ItemParcelable mSelectedMainType;
+    private ItemParcelable mSelectedManufacturer;
+    private ItemParcelable mSelectedBuiltDate;
+    private ArrayList<ItemParcelable> mBuiltDateList;
 
-    public static void start(AppCompatActivity activity, SelectedItemParcelable manufacturer,
-                             SelectedItemParcelable mainType, SelectedItemParcelable builtDate) {
+    public static void start(AppCompatActivity activity, ItemParcelable manufacturer,
+                             ItemParcelable mainType, ItemParcelable builtDate) {
         Intent starter = new Intent(activity, SelectBuiltDateActivity.class);
         starter.putExtra(SELECTED_MANUFACTURER, manufacturer);
         starter.putExtra(SELECTED_MAIN_TYPE, mainType);
@@ -79,14 +83,22 @@ public class SelectBuiltDateActivity extends BaseActivity
         mRvBuiltDates.setItemAnimator(new DefaultItemAnimator());
         mRvBuiltDates.setAdapter(mAdapter);
 
-        if(mSelectedManufacturer !=null && mSelectedMainType!=null)
-            mPresenter.doGetBuiltDates(mSelectedManufacturer.getNumber(), mSelectedMainType.getNumber());
+        if (savedInstanceState != null) {
+            mBuiltDateList = savedInstanceState.getParcelableArrayList(BUILT_DATES);
+        }
+        if(mBuiltDateList != null){
+            loadAdapter(ItemMapper.mapListParcelableToListModel(mBuiltDateList));
+        }else{
+            if(mSelectedManufacturer !=null && mSelectedMainType!=null)
+                mPresenter.doGetBuiltDates(mSelectedManufacturer.getNumber(), mSelectedMainType.getNumber());
+        }
     }
 
     @Override public void onSaveInstanceState(Bundle outState) {
         outState.putParcelable(SELECTED_MANUFACTURER, mSelectedManufacturer);
         outState.putParcelable(SELECTED_MAIN_TYPE, mSelectedMainType);
         outState.putParcelable(SELECTED_BUILT_DATE, mSelectedBuiltDate);
+        outState.putParcelableArrayList(BUILT_DATES, mBuiltDateList);
         outState.putInt(CURRENT_SCROLLING_POSITION, linearLayoutManager.findFirstVisibleItemPosition());
         super.onSaveInstanceState(outState);
     }
@@ -141,12 +153,8 @@ public class SelectBuiltDateActivity extends BaseActivity
             mRvBuiltDates.setVisibility(View.VISIBLE);
         if(mEmvMessage.getVisibility() == View.VISIBLE)
             mEmvMessage.setVisibility(View.GONE);
-        mAdapter.addList(builtDates);
-
-        if(mCurrentScrollingPosition!=null)
-            mRvBuiltDates.scrollToPosition(mCurrentScrollingPosition);
-        else
-            scrollToSelectedItem(builtDates);
+        mBuiltDateList = ItemMapper.mapListModelToListParcelable(builtDates);
+        loadAdapter(builtDates);
     }
 
     @Override public void onBackPressed() {
@@ -157,6 +165,15 @@ public class SelectBuiltDateActivity extends BaseActivity
     @Override protected void onDestroy() {
         mPresenter.detachView();
         super.onDestroy();
+    }
+
+    private void loadAdapter(List<ItemModel> builtDates){
+        mAdapter.addList(builtDates);
+
+        if(mCurrentScrollingPosition!=null)
+            mRvBuiltDates.scrollToPosition(mCurrentScrollingPosition);
+        else
+            scrollToSelectedItem(builtDates);
     }
 
     /** Scroll 2 less than the select built date.

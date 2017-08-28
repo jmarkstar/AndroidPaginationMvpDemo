@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 
+import timber.log.Timber;
+
 /**
  * Created by jmarkstar on 27/08/2017.
  */
@@ -33,6 +35,7 @@ public class ItemDao {
                 open();
             mSQLiteDatabase.beginTransaction();
             for (ItemData data : dataList){
+                Timber.d(data.toString());
                 ContentValues contentValues = new ContentValues();
                 contentValues.put(ItemData.NUMBER_FIELD, data.getNumber());
                 contentValues.put(ItemData.NAME_FIELD, data.getName());
@@ -77,11 +80,26 @@ public class ItemDao {
         }
     }
 
+    public void deleteItemsByType(ItemType itemType) throws LocalDatabaseException {
+        try {
+            if(!mSQLiteDatabase.isOpen())
+                open();
+            String where = ItemData.TYPE_FIELD+"=?";
+            String [] whereArgs = { String.valueOf(itemType.getValue()) };
+            int rows = mSQLiteDatabase.delete(ItemData.TABLE_NAME, where, whereArgs);
+            Timber.d("deleted rows = "+rows);
+        }catch(Exception ex){
+            ex.printStackTrace();
+            throw new LocalDatabaseException(R.string.exception_db_delete_items);
+        }
+    }
+
     public void deleteAll() throws LocalDatabaseException {
         try {
             if(!mSQLiteDatabase.isOpen())
                 open();
-            mSQLiteDatabase.delete(ItemData.TABLE_NAME, null, null);
+            int rows = mSQLiteDatabase.delete(ItemData.TABLE_NAME, null, null);
+            Timber.d("deleted rows = "+rows);
         }catch(Exception ex){
             ex.printStackTrace();
             throw new LocalDatabaseException(R.string.exception_db_delete_items);

@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import javax.inject.Inject;
 import retrofit2.Call;
+import timber.log.Timber;
 
 /**
  * Created by jmarkstar on 27/08/2017.
@@ -20,11 +21,13 @@ public class BuiltDatesDataManagerImpl extends BaseDataManager implements BuiltD
 
     @Inject BuiltDatesDataManagerImpl(){}
 
-    @Override public void getBuiltDates(String manufacturer, String mainType, String waKey, final Action.Callback<List<ItemModel>> callback) {
+    @Override public void getBuiltDates(String manufacturer, String mainType, String waKey,
+                                        final Action.Callback<List<ItemModel>> callback) {
         Call<BaseResponse<HashMap<String, String>>> responseCall =  mApiTestService.getBuiltDates(manufacturer, mainType, waKey);
         responseCall.enqueue(new RemoteCallback<BaseResponse<HashMap<String, String>>>() {
             @Override public void onSuccess(BaseResponse<HashMap<String, String>> response) {
                 List<ItemModel> builtDates = CarTypeMapper.mapResponseToBuiltDatesModel(response);
+                Timber.d("built dates from server");
                 notifySuccess(builtDates, callback);
             }
 
