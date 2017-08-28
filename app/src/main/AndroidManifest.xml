@@ -25,6 +25,9 @@
         <activity android:name=".ui.cartype.pagination.manutafturer.SelectManufacturerActivity" />
         <activity android:name=".ui.cartype.pagination.maintype.SelectMainTypeActivity" />
         <activity android:name=".ui.cartype.pagination.builtdate.SelectBuiltDateActivity"/>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="2183e48b1bc2df9533134638f091124cca7714a8" />
     </application>
 
 </manifest>

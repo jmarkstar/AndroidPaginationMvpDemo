@@ -37,7 +37,7 @@ public class CarListApplication extends Application {
         CrashlyticsCore core = new CrashlyticsCore.Builder()
                 .disabled(BuildConfig.DEBUG)
                 .build();
-        Fabric.with(this, new Crashlytics.Builder().core(core).build() );
+        Fabric.with(this, new Crashlytics.Builder().core(core).build(), new Crashlytics() );
         if(BuildConfig.DEBUG){
             Timber.plant( new Timber.DebugTree());
         }
