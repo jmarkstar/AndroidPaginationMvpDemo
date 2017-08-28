@@ -27,20 +27,26 @@ public abstract class BasePresenter<V extends MvpView> implements MvpPresenter<V
         return mView != null;
     }
 
-    protected final void handleError(Throwable ex){
+    protected final int getErrorMessage(Throwable ex){
         ex.printStackTrace();
+        int message;
         if(ex instanceof LocalDatabaseException){
-            mView.showErrorMessage(((LocalDatabaseException)ex).getIdRsMessage());
+            message = ((LocalDatabaseException)ex).getIdRsMessage();
         } else if(ex instanceof UnAuthorizedApiException){
-            mView.showErrorMessage(R.string.exception_unauthorized_api);
+            message = R.string.exception_unauthorized_api;
         } else if(ex instanceof NetworkException){
             NetworkException nEx = (NetworkException)ex;
-            Log.v("BaseContractor", "code = "+nEx.getHttpCode());
-            if(nEx.getHttpCode() == 404){
-                mView.showErrorMessage(R.string.exception_404_not_found);
+            Log.v("handleError", "code = "+nEx.getHttpCode());
+            if(nEx.getHttpCode() == 400){
+                message = R.string.exception_400_bad_request;
+            }else if(nEx.getHttpCode() == 404){
+                message = R.string.exception_404_not_found;
+            }else{
+                message = R.string.exception_connection_error;
             }
         }else{
-            mView.showErrorMessage(R.string.exception_connection_error);
+            message =  R.string.exception_connection_error;
         }
+        return message;
     }
 }

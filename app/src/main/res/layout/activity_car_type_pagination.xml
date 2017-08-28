@@ -9,23 +9,34 @@
     <LinearLayout
         android:layout_centerInParent="true"
         android:orientation="vertical"
+        android:padding="34dp"
+        android:background="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <TextView android:id="@+id/tv_manufacturer"
-            android:hint="Select a Manufacturer"
+            android:hint="@string/car_type_select_manufacturer"
+            android:textColorHint="@color/white"
+            android:textStyle="bold"
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <TextView android:id="@+id/tv_card_type"
+        <TextView android:id="@+id/tv_main_type"
             android:layout_marginTop="20dp"
-            android:hint="Select a Card Type"
+            android:hint="@string/car_type_select_main_type"
+            android:textColorHint="@color/white"
+            android:textStyle="bold"
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <TextView android:id="@+id/tv_built_date"
             android:layout_marginTop="20dp"
-            android:hint="Select a Built Date"
+            android:hint="@string/car_type_select_built_date"
+            android:textColorHint="@color/white"
+            android:textStyle="bold"
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

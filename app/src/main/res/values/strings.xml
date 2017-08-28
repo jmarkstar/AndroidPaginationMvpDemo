@@ -2,4 +2,21 @@
     <string name="app_name">CarList</string>
     <string name="main_option_pagination">Pagination</string>
     <string name="main_option_searching">Searching</string>
+    <string name="error_retry_text">RETRY</string>
+    <string name="error_generic_title">Ups! An error occurred</string>
+    <string name="error_generic_cause">The server took too long to respond.</string>
+
+    <string name="manufacturer_error_title">Ups! Couldn\'t fetch manufacturers</string>
+    <string name="manufacturer_title">Select Manufacturer</string>
+    <string name="manufacturer_required">You need to select a manufacturer</string>
+
+    <string name="main_type_error_title">Ups! Couldn\'t fetch main types</string>
+    <string name="main_type_title">Select Main Type</string>
+    <string name="main_type_required">You need to select a main type</string>
+    <string name="built_date_title">Select Built Date</string>
+    <string name="car_type_select_manufacturer">Select a Manufacturer</string>
+    <string name="car_type_select_main_type">Select a Main Type</string>
+    <string name="car_type_select_built_date">Select a Built Date</string>
+
+
 </resources>

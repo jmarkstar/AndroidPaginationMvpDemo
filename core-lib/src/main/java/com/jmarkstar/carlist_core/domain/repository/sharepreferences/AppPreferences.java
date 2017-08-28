@@ -1,51 +1,20 @@
 package com.jmarkstar.carlist_core.domain.repository.sharepreferences;
 
-import android.content.SharedPreferences;
-
-import javax.inject.Inject;
-
 /**
- * Created by jmarkstar on 25/08/2017.
+ * Created by jmarkstar on 26/08/2017.
  */
 
-public class AppPreferences {
+public interface AppPreferences {
 
-    private static final String MANUFACTURER_PAGE = "manufacturer_page";
-    private static final String MANUFACTURER_NEXT_PAGE = "manufacturer_next_page";
-    private static final String MANUFACTURER_MAX_PAGES = "manufacturer_max_pages";
+    void saveMainTypesPage(String manufacturer, int page);
+    int getMainTypesPage(String manufacturer);
+    void saveMainTypesTotalPageCount(String manufacturer, int page);
+    int getMainTypesTotalPageCount(String manufacturer);
 
-    @Inject SharedPreferences mSharedPreferences;
+    void saveManufacturerPage(int page);
+    int getManufacturerPage();
+    void saveManufacturerTotalPageCount(int page);
+    int getManufacturerTotalPageCount();
 
-    @Inject AppPreferences(){}
-
-    public void saveManufacturerPage(int page){
-        SharedPreferences.Editor editor = mSharedPreferences.edit();
-        editor.putInt(MANUFACTURER_PAGE, page);
-        editor.apply();
-    }
-
-    public int getManufacturerPage(){
-        return mSharedPreferences.getInt(MANUFACTURER_PAGE, 0);
-    }
-
-    public void saveManufacturerNextPage(int page){
-        SharedPreferences.Editor editor = mSharedPreferences.edit();
-        editor.putInt(MANUFACTURER_NEXT_PAGE, page);
-        editor.apply();
-    }
-
-    public int getManufacturerNextPage(){
-        return mSharedPreferences.getInt(MANUFACTURER_NEXT_PAGE, 0);
-    }
-
-    public void saveManufacturerMaxPages(int page){
-        SharedPreferences.Editor editor = mSharedPreferences.edit();
-        editor.putInt(MANUFACTURER_MAX_PAGES, page);
-        editor.apply();
-    }
-
-    public int getManufacturerMaxPages(){
-        return mSharedPreferences.getInt(MANUFACTURER_MAX_PAGES, 0);
-    }
-
+    void deleteAll();
 }

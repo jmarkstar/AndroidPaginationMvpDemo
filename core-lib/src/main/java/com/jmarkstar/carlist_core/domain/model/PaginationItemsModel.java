@@ -1,17 +1,17 @@
 package com.jmarkstar.carlist_core.domain.model;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by jmarkstar on 24/08/2017.
  */
-
-public class PaginationManufaturesModel {
+public class PaginationItemsModel {
 
     private Integer page;
     private Integer pageSize;
     private Integer totalPageCount;
-    private HashMap<String, String> manufactures;
+    private List<ItemModel> items;
 
     public Integer getPage() {
         return page;
@@ -37,21 +37,22 @@ public class PaginationManufaturesModel {
         this.totalPageCount = totalPageCount;
     }
 
-    public HashMap<String, String> getManufactures() {
-        return manufactures;
+    public List<ItemModel> getItems() {
+        if(items== null) items = new ArrayList<>();
+        return items;
     }
 
-    public void setManufactures(HashMap<String, String> manufactures) {
-        this.manufactures = manufactures;
+    public void setItems(List<ItemModel> items) {
+        this.items = items;
     }
 
     @Override
     public String toString() {
-        return "PaginationManufaturesModel{" +
+        return "PaginationItemsModel{" +
                 "page=" + page +
                 ", pageSize=" + pageSize +
                 ", totalPageCount=" + totalPageCount +
-                ", manufactures=" + manufactures +
+                ", items size=" + getItems().size() +
                 '}';
     }
 }

@@ -1,11 +1,16 @@
 <resources>
     <string name="app_name">core-lib</string>
 
-    <string name="exception_no_internet_error">En este momento no cuentas con conexión a internet. Por favor, inténtalo más tarde.</string>
-    <string name="exception_connection_error">Se perdió la conexión con el servidor. Por favor, inténtalo más tarde.</string>
-    <string name="exception_unauthorized_api">Usted no tiene acceso a este recurso. Intente logeandose nuevamente.</string>
-    <string name="exception_404_not_found">No se encontró este recurso.</string>
-
-    <string name="exception_get_product_by_id">Ups! Ocurrió un error al buscar el producto.</string>
+    <string name="exception_connection_error">No connection to the server; please check your network settings.</string>
+    <string name="exception_unauthorized_api">You are not allowed to use this resource.</string>
+    <string name="exception_404_not_found">Resource not found.</string>
+    <string name="exception_400_bad_request">Bad Request.</string>
     <string name="exception_callback_null">Callback can\'t be null</string>
+
+    <string name="exception_db_get_items">An error occurred while obtaining items.</string>
+    <string name="exception_db_insert_items">An error occurred while inserting items.</string>
+    <string name="exception_db_delete_items">An error occurred while deleting items.</string>
+
+    <string name="exception_db_get_filters">An error occurred while obtaining filters.</string>
+    <string name="exception_db_insert_filters">An error occurred while inserting filters.</string>
 </resources>

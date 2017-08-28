@@ -3,7 +3,6 @@ package com.jmarkstar.carlist.ui.cartype.pagination.manutafturer;
 import com.jmarkstar.carlist.di.ActivityScope;
 import com.jmarkstar.carlist.di.ApplicationComponent;
 import com.jmarkstar.carlist_core.presenter.module.cartype.manufacturer.SelectManufacturerModule;
-
 import dagger.Component;
 
 /**

@@ -1,6 +1,6 @@
 package com.jmarkstar.carlist_core.domain.model;
 
-import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by jmarkstar on 24/08/2017.
@@ -8,13 +8,13 @@ import java.util.HashMap;
 
 public class BuiltDatesModel {
 
-    private HashMap<String, String> builtDates;
+    private List<ItemModel> builtDates;
 
-    public HashMap<String, String> getBuiltDates() {
+    public List<ItemModel> getBuiltDates() {
         return builtDates;
     }
 
-    public void setBuiltDates(HashMap<String, String> builtDates) {
+    public void setBuiltDates(List<ItemModel> builtDates) {
         this.builtDates = builtDates;
     }
 

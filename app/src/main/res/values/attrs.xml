@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ErrorMessageView">
+        <attr name="error_title" format="string"   />
+        <attr name="error_cause" format="string" />
+    </declare-styleable>
+</resources>

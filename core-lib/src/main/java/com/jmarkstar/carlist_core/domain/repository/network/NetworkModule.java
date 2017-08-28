@@ -54,7 +54,7 @@ public final class NetworkModule {
         httpClientBuilder.readTimeout(Constants.HTTP_TIMEOUT, TimeUnit.SECONDS);
         httpClientBuilder.writeTimeout(Constants.HTTP_TIMEOUT, TimeUnit.SECONDS);
         httpClientBuilder.addInterceptor(httpLoggingInterceptor);
-        httpClientBuilder.cache(cache);
+        //httpClientBuilder.cache(cache);
         return httpClientBuilder.build();
     }
 

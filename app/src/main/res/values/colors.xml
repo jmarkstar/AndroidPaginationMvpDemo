@@ -3,4 +3,21 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="white">#FFFFFF</color>
+
+    <color name="manufacturer1_bg_color">#DCEDC8</color>
+    <color name="manufacturer1_number_color">#1976D2</color>
+    <color name="manufacturer1_name_color">#3D5AFE</color>
+    <color name="manufacturer2_bg_color">#D1C4E9</color>
+    <color name="manufacturer2_number_color">#E53935</color>
+    <color name="manufacturer2_name_color">#3F51B5</color>
+
+    <color name="maintype1_bg_color">#FFE0B2</color>
+    <color name="maintype1_name_color">#388E3C</color>
+    <color name="maintype2_bg_color">#FFCCBC</color>
+    <color name="maintype2_name_color">#1976D2</color>
+
+    <color name="builtdate1_bg_color">#DCEDC8</color>
+    <color name="builtdate2_bg_color">#FFCCBC</color>
 </resources>

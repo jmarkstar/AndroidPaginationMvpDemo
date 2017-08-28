@@ -8,6 +8,8 @@ import com.jmarkstar.carlist_core.presenter.base.MvpPresenter;
 
 public interface SelectManufacturerMvpPresenter<V extends SelectManufacturerMvpView>
     extends MvpPresenter<V>{
-    void doUpManufacturerList();
-    void doDownManufacturerList();
+    void doGetMoreManufactures();
+    void doGetManufactures();
+    boolean isLastPage();
+    boolean isLoading();
 }

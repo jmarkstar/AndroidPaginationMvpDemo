@@ -1,11 +1,11 @@
 package com.jmarkstar.carlist_core.presenter.module.cartype.manufacturer;
 
-import com.jmarkstar.carlist_core.domain.interactor.CarTypeDispatcher;
-import com.jmarkstar.carlist_core.domain.interactor.CarTypeDispatcherImpl;
-import com.jmarkstar.carlist_core.domain.repository.manager.CarTypeDataManager;
-import com.jmarkstar.carlist_core.domain.repository.manager.CarTypeDataManagerImpl;
+import com.jmarkstar.carlist_core.domain.interactor.ManufacturerDispatcher;
+import com.jmarkstar.carlist_core.domain.interactor.ManufacturerDispatcherImpl;
+import com.jmarkstar.carlist_core.domain.repository.manager.ManufacturerDataManager;
+import com.jmarkstar.carlist_core.domain.repository.manager.ManufacturerDataManagerImpl;
 import com.jmarkstar.carlist_core.domain.repository.sharepreferences.AppPreferences;
-
+import com.jmarkstar.carlist_core.domain.repository.sharepreferences.AppPreferencesImpl;
 import dagger.Module;
 import dagger.Provides;
 
@@ -21,7 +21,7 @@ public class SelectManufacturerModule {
         this.mView = mView;
     }
 
-    @Provides AppPreferences provideAppPreferences(AppPreferences appPreferences){
+    @Provides AppPreferences provideAppPreferences(AppPreferencesImpl appPreferences){
         return appPreferences;
     }
 
@@ -29,12 +29,12 @@ public class SelectManufacturerModule {
         return mView;
     }
 
-    @Provides CarTypeDataManager  provideCarTypeDataManager(CarTypeDataManagerImpl carTypeDataManager){
-        return carTypeDataManager;
+    @Provides ManufacturerDataManager provideManufacturerDataManager(ManufacturerDataManagerImpl dataManager){
+        return dataManager;
     }
 
-    @Provides CarTypeDispatcher provideCarTypeDispatcher(CarTypeDispatcherImpl carTypeDispatcher){
-        return carTypeDispatcher;
+    @Provides ManufacturerDispatcher provideManufacturerDispatcher(ManufacturerDispatcherImpl dispatcher){
+        return dispatcher;
     }
 
     @Provides SelectManufacturerMvpPresenter<SelectManufacturerMvpView>

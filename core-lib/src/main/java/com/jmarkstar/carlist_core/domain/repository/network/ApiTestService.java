@@ -1,10 +1,7 @@
 package com.jmarkstar.carlist_core.domain.repository.network;
 
-
 import com.jmarkstar.carlist_core.domain.repository.network.response.BaseResponse;
-
 import java.util.HashMap;
-
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;

@@ -1,6 +1,8 @@
 package com.jmarkstar.carlist.di;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+
 import com.jmarkstar.carlist.ui.main.MainActivity;
 import com.jmarkstar.carlist_core.domain.interactor.executor.Executor;
 import com.jmarkstar.carlist_core.domain.interactor.executor.ExecutorModule;
@@ -19,6 +21,7 @@ import dagger.Component;
 public interface ApplicationComponent {
 
     Context getContext();
+    SharedPreferences getSharedPreferences();
     Executor getExecutor();
     MainThread getMainThread();
     ApiTestService getApiTestService();

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/manufacturer2_bg_color"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView android:id="@+id/iv_manufacturer_icon"
+        android:src="@drawable/ic_manufacturer2"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <TextView android:id="@+id/tv_manufacturer_number"
+            android:text="194"
+            android:textColor="@color/manufacturer2_number_color"
+            android:textStyle="bold"
+            android:textSize="19sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView android:id="@+id/tv_manufacturer_name"
+            android:text="Dacia"
+            android:textColor="@color/manufacturer2_name_color"
+            android:textStyle="bold"
+            android:textSize="32sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>
